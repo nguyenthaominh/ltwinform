@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38ED4C89-1A62-41C6-BA0A-B7495981E56F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NguyenThaoMinh_2121110235</RootNamespace>
+    <AssemblyName>NguyenThaoMinh_2121110235</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\Functions.cs" />
+    <Compile Include="frmDMChatLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDMChatLieu.Designer.cs">
+      <DependentUpon>frmDMChatLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDMHangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDMHangHoa.Designer.cs">
+      <DependentUpon>frmDMHangHoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDMKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDMKhachHang.Designer.cs">
+      <DependentUpon>frmDMKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDMNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDMNhanVien.Designer.cs">
+      <DependentUpon>frmDMNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHoaDonBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHoaDonBan.Designer.cs">
+      <DependentUpon>frmHoaDonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTimKiemHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimKiemHD.Designer.cs">
+      <DependentUpon>frmTimKiemHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmDMChatLieu.resx">
+      <DependentUpon>frmDMChatLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDMHangHoa.resx">
+      <DependentUpon>frmDMHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDMKhachHang.resx">
+      <DependentUpon>frmDMKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDMNhanVien.resx">
+      <DependentUpon>frmDMNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHoaDonBan.resx">
+      <DependentUpon>frmHoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimKiemHD.resx">
+      <DependentUpon>frmTimKiemHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3500_2_03.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Quanlybanhang.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Quanlybanhang_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Quanlybanhang.mdf</DependentUpon>
+    </Content>
+    <None Include="Resources\icons8-research-151.png" />
+    <None Include="Resources\icons8-research-15.png" />
+    <None Include="Resources\icons8-find-153.png" />
+    <None Include="Resources\icons8-close-251.png" />
+    <None Include="Resources\icons8-delete-151.png" />
+    <None Include="Resources\icons8-cancel-15.png" />
+    <None Include="Resources\icons8-print-15.png" />
+    <None Include="Resources\icons8-find-152.png" />
+    <None Include="Resources\icons8-find-151.png" />
+    <None Include="Resources\icons8-find-15.png" />
+    <None Include="Resources\icons8-open-15.png" />
+    <None Include="Resources\icons8-open-16.png" />
+    <None Include="Resources\icons8-list-15.png" />
+    <None Include="Resources\icons8-add-18.png" />
+    <None Include="Resources\icons8-add-20.png" />
+    <None Include="Resources\icons8-delete-161.png" />
+    <None Include="Resources\icons8-delete-15.png" />
+    <None Include="Resources\icons8-edit-151.png" />
+    <None Include="Resources\icons8-edit-15.png" />
+    <None Include="Resources\icons8-skip-151.png" />
+    <None Include="Resources\icons8-save-15.png" />
+    <None Include="Resources\icons8-close-25.png" />
+    <None Include="Resources\icons8-skip-20.png" />
+    <None Include="Resources\icons8-skip-25.png" />
+    <None Include="Resources\icons8-square-box-with-a-double-arrow-for-back-button-36.png" />
+    <None Include="Resources\icons8-square-box-with-a-double-arrow-for-back-button-20.png" />
+    <None Include="Resources\icons8-skip-15.png" />
+    <None Include="Resources\icons8-save-20.png" />
+    <None Include="Resources\icons8-save-30.png" />
+    <None Include="Resources\icons8-edit-25.png" />
+    <None Include="Resources\icons8-edit-30.png" />
+    <None Include="Resources\icons8-plus-25.png" />
+    <None Include="Resources\icons8-plus-30.png" />
+    <None Include="Resources\icons8-delete-30.png" />
+    <None Include="Resources\icons8-delete-50.png" />
+    <None Include="Resources\icons8-delete-16.png" />
+    <None Include="Resources\icons8-add-16 %281%29.png" />
+    <None Include="Resources\icons8-add-16.png" />
+    <None Include="Resources\icons8-add-32.png" />
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
