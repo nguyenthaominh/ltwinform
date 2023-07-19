@@ -19,7 +19,7 @@ namespace NguyenThaoMinh_2121110235.Class
         public static void Connect()
         {
             con = new SqlConnection();
-            con.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\CNTT\WINDOWS\Doancuoiky\NguyenThaoMinh_2121110235\NguyenThaoMinh_2121110235\Quanlybanhang.mdf;Integrated Security=True";
+            con.ConnectionString = @"Data Source=THAOMINH;Initial Catalog=Quanlybanhang;Integrated Security=True";
             if (con.State != ConnectionState.Open)
             {
                 con.Open();

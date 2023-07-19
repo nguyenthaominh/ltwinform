@@ -16,6 +16,10 @@ namespace NguyenThaoMinh_2121110235
     public partial class frmLogin : Form
     {
         DataTable tblLI;
+        
+        SqlConnection con=new SqlConnection("Data Source = THAOMINH; Initial Catalog = Quanlybanhang; Integrated Security = True");
+        SqlCommand cmd;
+        SqlDataReader dr;
         public frmLogin()
         {
             InitializeComponent();
@@ -77,59 +81,32 @@ namespace NguyenThaoMinh_2121110235
             txtMatKhau.UseSystemPasswordChar = false;
         }
 
+
         private void pictureBox4_MouseUp(object sender, MouseEventArgs e)
         {
             txtMatKhau.UseSystemPasswordChar = true;
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        public void btnDangNhap_Click(object sender, EventArgs e)
         {
-            //string sql;
-            //string username = txtTenDangNhap.Text;
-            //string password = txtMatKhau.Text;
-
-            //try
-            //{
-            //    sql= "SELECT*FROM tblLogin WHERE username='"+ txtTenDangNhap.Text + "' AND password='" + txtMatKhau.Text + "'";
-            //    tblLI = Class.Functions.GetDataToTable(sql);
-            //    if (Class.Functions.CheckKey(sql))
-            //    {
-            //        username= txtTenDangNhap.Text;
-            //        password = txtMatKhau.Text;
-            //        frmMain frmMain= new frmMain();
-            //        frmMain.ShowDialog();
-            //        this.Hide();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Invalid login details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        txtTenDangNhap.Clear();
-            //        txtMatKhau.Clear();
-            //        txtTenDangNhap.Focus();
-                    
-            //    }    
-            //}
-            //catch
-            //{
-                if(txtTenDangNhap.Text=="admin"&&txtMatKhau.Text == "123456")
-                {
-                   
-                    frmMain frmMain = new frmMain();
-                    frmMain.ShowDialog();
-                    this.Close();
-
-
+            cmd = new SqlCommand("SELECT *FROM tblUsers WHERE username=@username and password=@password", con);
+            cmd.Parameters.AddWithValue("@username", txtTenDangNhap.Text);
+            cmd.Parameters.AddWithValue("@password", txtMatKhau.Text);
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if(dr.HasRows)
+            {
+                MessageBox.Show("Đăng nhập thành công");
+                this.Hide();
+                frmMain frmMain = new frmMain();
+                frmMain.ShowDialog();
+                
             }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
-
-            //}
-            //finally
-            //{
-            //    Application.Exit();
-            //}
+            else
+            {
+                MessageBox.Show("Đăng nhập thất bại, thử lại");
+            }
+            con.Close();
         }
 
         private void label10_Click(object sender, EventArgs e)

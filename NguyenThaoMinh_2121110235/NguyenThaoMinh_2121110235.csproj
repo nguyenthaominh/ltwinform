@@ -110,6 +110,7 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mytestcase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="frmRegister.cs">
@@ -172,13 +173,6 @@
     <None Include="Resources\3500_2_03.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Quanlybanhang.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Quanlybanhang_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Quanlybanhang.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\icons8-research-151.png" />
     <None Include="Resources\icons8-research-15.png" />
     <None Include="Resources\icons8-find-153.png" />
