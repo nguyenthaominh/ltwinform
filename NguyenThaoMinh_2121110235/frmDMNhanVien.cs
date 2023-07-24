@@ -136,7 +136,7 @@ namespace NguyenThaoMinh_2121110235
                 txtMaNhanVien.Text = "";
                 return;
             }
-            sql = "INSERT INTO tblNhanVien(MaNhanVien,TenNhanVien,GioiTinh, DiaChi,DienThoai, NgaySinh) VALUES (N'" + txtMaNhanVien.Text.Trim() + "',N'" + txtTenNhanVien.Text.Trim() + "',N'" + gt + "',N'" + txtDiaChi.Text.Trim() + "','" + mskDienThoai.Text + "','" + Functions.ConvertDateTime(dtpNgaySinh.Text) + "')";
+            sql = "INSERT INTO tblNhanVien(MaNhanVien,TenNhanVien,GioiTinh, DiaChi,DienThoai, NgaySinh) VALUES (N'" + txtMaNhanVien.Text.Trim() + "',N'" + txtTenNhanVien.Text.Trim() + "',N'" + gt + "',N'" + txtDiaChi.Text.Trim() + "','" + mskDienThoai.Text + "','" + dtpNgaySinh.Value + "')";
             Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValues();

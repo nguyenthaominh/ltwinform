@@ -132,7 +132,7 @@ namespace NguyenThaoMinh_2121110235
             Class.Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValue();
-
+           
             btnBoQua.Enabled = false;
         }
 

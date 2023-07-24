@@ -15,7 +15,6 @@ namespace NguyenThaoMinh_2121110235
 {
     public partial class frmLogin : Form
     {
-        DataTable tblLI;
         
         SqlConnection con=new SqlConnection("Data Source = THAOMINH; Initial Catalog = Quanlybanhang; Integrated Security = True");
         SqlCommand cmd;
@@ -93,6 +92,7 @@ namespace NguyenThaoMinh_2121110235
             cmd.Parameters.AddWithValue("@username", txtTenDangNhap.Text);
             cmd.Parameters.AddWithValue("@password", txtMatKhau.Text);
             con.Open();
+
             dr = cmd.ExecuteReader();
             if(dr.HasRows)
             {

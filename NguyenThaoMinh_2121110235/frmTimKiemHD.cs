@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using NguyenThaoMinh_2121110235.Class;
+using System.Net.NetworkInformation;
+
 namespace NguyenThaoMinh_2121110235
 {
     public partial class frmTimKiemHD : Form
@@ -48,7 +50,7 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnTimLai_Click(object sender, EventArgs e)
@@ -78,6 +80,48 @@ namespace NguyenThaoMinh_2121110235
         private void frmTimKiemHD_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtTongTien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        private void btnTimKiem_Click_1(object sender, EventArgs e)
+        {
+            string sql;
+            if ((txtMaHDBan.Text == "") && (txtThang.Text == "") && (txtNam.Text == "") &&
+               (txtMaNhanVien.Text == "") && (txtMaKhach.Text == "") &&
+               (txtTongTien.Text == ""))
+            {
+                MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            sql = "SELECT * FROM tblHDBan WHERE 1=1";
+            if (txtMaHDBan.Text != "")
+                sql = sql + " AND MaHDBan Like N'%" + txtMaHDBan.Text + "%'";
+            if (txtThang.Text != "")
+                sql = sql + " AND MONTH(NgayBan) =" + txtThang.Text;
+            if (txtNam.Text != "")
+                sql = sql + " AND YEAR(NgayBan) =" + txtNam.Text;
+            if (txtMaNhanVien.Text != "")
+                sql = sql + " AND MaNhanVien Like N'%" + txtMaNhanVien.Text + "%'";
+            if (txtMaKhach.Text != "")
+                sql = sql + " AND MaKhach Like N'%" + txtMaKhach.Text + "%'";
+            if (txtTongTien.Text != "")
+                sql = sql + " AND TongTien <=" + txtTongTien.Text;
+            tblHDB = Functions.GetDataToTable(sql);
+            if (tblHDB.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("Có " + tblHDB.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            dgvTKHoaDon.DataSource = tblHDB;
+            LoadDataGridView();
         }
     }
 }

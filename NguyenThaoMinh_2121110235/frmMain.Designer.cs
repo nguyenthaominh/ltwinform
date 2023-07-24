@@ -76,7 +76,7 @@
             this.trợGiúpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -85,7 +85,7 @@
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuThoat});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(82, 29);
+            this.mnuFile.Size = new System.Drawing.Size(82, 30);
             this.mnuFile.Text = "&Tệp tin";
             // 
             // mnuThoat
@@ -105,7 +105,7 @@
             this.mnuNhanVien,
             this.mnuKhachHang});
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(109, 29);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(109, 30);
             this.danhMụcToolStripMenuItem.Text = "&Danh mục";
             // 
             // mnuChatLieu
@@ -147,7 +147,7 @@
             this.hóaĐơnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuHoaDonBan});
             this.hóaĐơnToolStripMenuItem.Name = "hóaĐơnToolStripMenuItem";
-            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
+            this.hóaĐơnToolStripMenuItem.Size = new System.Drawing.Size(98, 30);
             this.hóaĐơnToolStripMenuItem.Text = "&Hóa đơn";
             // 
             // mnuHoaDonBan
@@ -164,7 +164,7 @@
             this.hàngToolStripMenuItem,
             this.kháchHàngToolStripMenuItem1});
             this.tìmKiếmToolStripMenuItem.Name = "tìmKiếmToolStripMenuItem";
-            this.tìmKiếmToolStripMenuItem.Size = new System.Drawing.Size(100, 29);
+            this.tìmKiếmToolStripMenuItem.Size = new System.Drawing.Size(100, 30);
             this.tìmKiếmToolStripMenuItem.Text = "&Tìm kiếm";
             // 
             // mnuTimKiemHD
@@ -192,7 +192,7 @@
             this.hàngTồnToolStripMenuItem,
             this.doanhThuToolStripMenuItem});
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(91, 30);
             this.báoCáoToolStripMenuItem.Text = "&Báo cáo";
             // 
             // hàngTồnToolStripMenuItem
@@ -213,7 +213,7 @@
             this.trợGiúpToolStripMenuItem1,
             this.vàiNétToolStripMenuItem});
             this.trợGiúpToolStripMenuItem.Name = "trợGiúpToolStripMenuItem";
-            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(93, 29);
+            this.trợGiúpToolStripMenuItem.Size = new System.Drawing.Size(93, 30);
             this.trợGiúpToolStripMenuItem.Text = "&Trợ giúp";
             // 
             // trợGiúpToolStripMenuItem1
@@ -285,9 +285,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 33);
+            this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 402);
+            this.panel1.Size = new System.Drawing.Size(800, 399);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1

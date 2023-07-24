@@ -41,7 +41,7 @@
             this.txtThang = new System.Windows.Forms.TextBox();
             this.txtMaNhanVien = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
-            this.txtMaKhachHang = new System.Windows.Forms.TextBox();
+            this.txtMaKhach = new System.Windows.Forms.TextBox();
             this.txtMaHDBan = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -104,6 +104,7 @@
             this.btnTimKiem.Text = "&Tìm kiếm";
             this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click_1);
             // 
             // panel2
             // 
@@ -131,7 +132,7 @@
             this.panel3.Controls.Add(this.txtThang);
             this.panel3.Controls.Add(this.txtMaNhanVien);
             this.panel3.Controls.Add(this.txtTongTien);
-            this.panel3.Controls.Add(this.txtMaKhachHang);
+            this.panel3.Controls.Add(this.txtMaKhach);
             this.panel3.Controls.Add(this.txtMaHDBan);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label3);
@@ -183,13 +184,14 @@
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(214, 26);
             this.txtTongTien.TabIndex = 1;
+            this.txtTongTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTongTien_KeyPress);
             // 
-            // txtMaKhachHang
+            // txtMaKhach
             // 
-            this.txtMaKhachHang.Location = new System.Drawing.Point(551, 47);
-            this.txtMaKhachHang.Name = "txtMaKhachHang";
-            this.txtMaKhachHang.Size = new System.Drawing.Size(214, 26);
-            this.txtMaKhachHang.TabIndex = 1;
+            this.txtMaKhach.Location = new System.Drawing.Point(551, 47);
+            this.txtMaKhach.Name = "txtMaKhach";
+            this.txtMaKhach.Size = new System.Drawing.Size(214, 26);
+            this.txtMaKhach.TabIndex = 1;
             // 
             // txtMaHDBan
             // 
@@ -308,7 +310,7 @@
         private System.Windows.Forms.TextBox txtThang;
         private System.Windows.Forms.TextBox txtMaNhanVien;
         private System.Windows.Forms.TextBox txtTongTien;
-        private System.Windows.Forms.TextBox txtMaKhachHang;
+        private System.Windows.Forms.TextBox txtMaKhach;
         private System.Windows.Forms.TextBox txtMaHDBan;
         private System.Windows.Forms.Label label8;
     }

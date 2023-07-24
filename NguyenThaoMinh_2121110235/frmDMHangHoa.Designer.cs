@@ -214,6 +214,7 @@
             this.picAnh.Location = new System.Drawing.Point(600, 47);
             this.picAnh.Name = "picAnh";
             this.picAnh.Size = new System.Drawing.Size(220, 176);
+            this.picAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAnh.TabIndex = 15;
             this.picAnh.TabStop = false;
             // 

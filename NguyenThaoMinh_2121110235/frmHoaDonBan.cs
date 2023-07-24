@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using NguyenThaoMinh_2121110235.Class;
 using COMExcel = Microsoft.Office.Interop.Excel;
-
 namespace NguyenThaoMinh_2121110235
 {
     public partial class frmHoaDonBan : Form
@@ -70,14 +69,14 @@ namespace NguyenThaoMinh_2121110235
         {
             string str;
             str = "SELECT NgayBan FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
-            dtpNgayBan.Text = Functions.ConvertDateTime(Functions.GetFieldValues(str));
+            dtpNgayBan.Value = DateTime.Parse(Functions.GetFieldValues(str));
             str = "SELECT MaNhanVien FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
             cboMaNhanVien.Text = Functions.GetFieldValues(str);
             str = "SELECT MaKhach FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
             cboMaKhach.Text = Functions.GetFieldValues(str);
             str = "SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
             txtTongTien.Text = Functions.GetFieldValues(str);
-            lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(txtTongTien.Text);
+            lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(txtTongTien.Text));
         }
         private void frmHoaDonBan_Load(object sender, EventArgs e)
         {
@@ -114,7 +113,7 @@ namespace NguyenThaoMinh_2121110235
         private void ResetValues()
         {
             txtMaHDBan.Text = "";
-            dtpNgayBan.Text = DateTime.Now.ToShortDateString();
+            dtpNgayBan.Value = DateTime.Now;
             cboMaNhanVien.Text = "";
             cboMaKhach.Text = "";
             txtTongTien.Text = "0";
@@ -224,7 +223,7 @@ namespace NguyenThaoMinh_2121110235
             sql = "UPDATE tblHDBan SET TongTien =" + Tongmoi + " WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
             Functions.RunSQL(sql);
             txtTongTien.Text = Tongmoi.ToString();
-            lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(Tongmoi.ToString());
+            lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(Tongmoi.ToString()));
             ResetValuesHang();
             btnXoa.Enabled = true;
             btnThem.Enabled = true;
@@ -259,7 +258,7 @@ namespace NguyenThaoMinh_2121110235
                 sql = "UPDATE tblHDBan SET TongTien =" + tongmoi + " WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
                 Functions.RunSQL(sql);
                 txtTongTien.Text = tongmoi.ToString();
-                lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(tongmoi.ToString());
+                lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(tongmoi.ToString()));
                 LoadDataGridView();
             }
 
@@ -400,13 +399,13 @@ namespace NguyenThaoMinh_2121110235
             exRange.Range["B1:B1"].ColumnWidth = 15;
             exRange.Range["A1:B1"].MergeCells = true;
             exRange.Range["A1:B1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A1:B1"].Value = "Shop B.A.";
+            exRange.Range["A1:B1"].Value = "Pet Shop";
             exRange.Range["A2:B2"].MergeCells = true;
             exRange.Range["A2:B2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A2:B2"].Value = "Chùa Bộc - Hà Nội";
+            exRange.Range["A2:B2"].Value = "Quận 9 - TP.Hồ Chí Minh";
             exRange.Range["A3:B3"].MergeCells = true;
             exRange.Range["A3:B3"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["A3:B3"].Value = "Điện thoại: (04)38526419";
+            exRange.Range["A3:B3"].Value = "Điện thoại: (+84)357970001";
             exRange.Range["C2:E2"].Font.Size = 16;
             exRange.Range["C2:E2"].Font.Bold = true;
             exRange.Range["C2:E2"].Font.ColorIndex = 3; //Màu đỏ
@@ -466,13 +465,13 @@ namespace NguyenThaoMinh_2121110235
             exRange.Range["A1:F1"].Font.Bold = true;
             exRange.Range["A1:F1"].Font.Italic = true;
             exRange.Range["A1:F1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignRight;
-            exRange.Range["A1:F1"].Value = "Bằng chữ: " + Functions.ChuyenSoSangChu(tblThongtinHD.Rows[0][2].ToString());
+            exRange.Range["A1:F1"].Value = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(tblThongtinHD.Rows[0][2].ToString()));
             exRange = exSheet.Cells[4][hang + 17]; //Ô A1 
             exRange.Range["A1:C1"].MergeCells = true;
             exRange.Range["A1:C1"].Font.Italic = true;
             exRange.Range["A1:C1"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             DateTime d = Convert.ToDateTime(tblThongtinHD.Rows[0][1]);
-            exRange.Range["A1:C1"].Value = "Hà Nội, ngày " + d.Day + " tháng " + d.Month + " năm " + d.Year;
+            exRange.Range["A1:C1"].Value = "TP Hồ Chí Minh, ngày " + d.Day + " tháng " + d.Month + " năm " + d.Year;
             exRange.Range["A2:C2"].MergeCells = true;
             exRange.Range["A2:C2"].Font.Italic = true;
             exRange.Range["A2:C2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
