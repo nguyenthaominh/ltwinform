@@ -41,7 +41,6 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnQuenMatKhau = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnDangKy = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -150,7 +149,6 @@
             this.panel2.Controls.Add(this.linkLabel1);
             this.panel2.Controls.Add(this.btnQuenMatKhau);
             this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.btnDangKy);
             this.panel2.Controls.Add(this.btnDangNhap);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
@@ -180,6 +178,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.Font = new System.Drawing.Font("Bahnschrift", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.Location = new System.Drawing.Point(185, 500);
             this.linkLabel1.Name = "linkLabel1";
@@ -215,21 +214,6 @@
             this.label11.Size = new System.Drawing.Size(232, 43);
             this.label11.TabIndex = 6;
             this.label11.Text = "CHÀO MỪNG ";
-            // 
-            // btnDangKy
-            // 
-            this.btnDangKy.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDangKy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDangKy.FlatAppearance.BorderSize = 0;
-            this.btnDangKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangKy.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangKy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnDangKy.Location = new System.Drawing.Point(-20, 379);
-            this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(214, 43);
-            this.btnDangKy.TabIndex = 3;
-            this.btnDangKy.Text = "Đăng ký";
-            this.btnDangKy.UseVisualStyleBackColor = false;
             // 
             // btnDangNhap
             // 
@@ -295,6 +279,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(418, 16);
             this.pictureBox4.Name = "pictureBox4";
@@ -349,6 +334,7 @@
             this.txtTenDangNhap.Size = new System.Drawing.Size(338, 30);
             this.txtTenDangNhap.TabIndex = 1;
             this.txtTenDangNhap.Click += new System.EventHandler(this.textBox1_Click);
+            this.txtTenDangNhap.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTenDangNhap_KeyUp);
             // 
             // pictureBox2
             // 
@@ -418,7 +404,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.TextBox txtTenDangNhap;
-        private System.Windows.Forms.Button btnDangKy;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.LinkLabel linkLabel1;

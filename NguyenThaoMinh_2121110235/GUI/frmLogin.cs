@@ -118,5 +118,11 @@ namespace NguyenThaoMinh_2121110235
         {
 
         }
+
+        private void txtTenDangNhap_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SendKeys.Send("{TAB}");
+        }
     }
 }

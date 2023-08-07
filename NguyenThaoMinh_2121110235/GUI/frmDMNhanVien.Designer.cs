@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDMNhanVien));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIn = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
             this.btnBoQua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnIn);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnBoQua);
             this.panel1.Controls.Add(this.btnLuu);
@@ -70,11 +72,23 @@
             this.panel1.Size = new System.Drawing.Size(728, 61);
             this.panel1.TabIndex = 0;
             // 
+            // btnIn
+            // 
+            this.btnIn.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_print_15;
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(650, 11);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(75, 39);
+            this.btnIn.TabIndex = 12;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // btnDong
             // 
             this.btnDong.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_close_25;
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDong.Location = new System.Drawing.Point(571, 11);
+            this.btnDong.Location = new System.Drawing.Point(547, 11);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(101, 38);
             this.btnDong.TabIndex = 11;
@@ -87,7 +101,7 @@
             // 
             this.btnBoQua.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_skip_151;
             this.btnBoQua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBoQua.Location = new System.Drawing.Point(468, 11);
+            this.btnBoQua.Location = new System.Drawing.Point(440, 11);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(101, 38);
             this.btnBoQua.TabIndex = 10;
@@ -100,7 +114,7 @@
             // 
             this.btnLuu.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_save_15;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(365, 11);
+            this.btnLuu.Location = new System.Drawing.Point(333, 11);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(101, 38);
             this.btnLuu.TabIndex = 9;
@@ -112,7 +126,7 @@
             // 
             this.btnSua.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_edit_151;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(262, 11);
+            this.btnSua.Location = new System.Drawing.Point(226, 11);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(101, 38);
             this.btnSua.TabIndex = 8;
@@ -124,7 +138,7 @@
             // 
             this.btnXoa.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_delete_161;
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(159, 11);
+            this.btnXoa.Location = new System.Drawing.Point(119, 11);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(101, 38);
             this.btnXoa.TabIndex = 7;
@@ -136,7 +150,7 @@
             // 
             this.btnThem.Image = global::NguyenThaoMinh_2121110235.Properties.Resources.icons8_add_18;
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(56, 11);
+            this.btnThem.Location = new System.Drawing.Point(12, 11);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(101, 38);
             this.btnThem.TabIndex = 6;
@@ -342,5 +356,6 @@
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Button btnIn;
     }
 }
