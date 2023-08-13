@@ -46,9 +46,7 @@ namespace NguyenThaoMinh_2121110235
         }
         private void LoadDataGridView()
         {
-            string sql;
-            sql = "SELECT a.MaHang, b.TenHang, a.SoLuong, b.DonGiaBan, a.GiamGia,a.ThanhTien FROM tblChiTietHDBan AS a, tblHang AS b WHERE a.MaHDBan = N'" + txtMaHDBan.Text + "' AND a.MaHang=b.MaHang";
-            tblCTHDB = Functions.GetDataToTable(sql);
+            tblCTHDB = BUS.BUS.LoadHoaDon(txtMaHDBan.Text);
             dgvHDBanHang.DataSource = tblCTHDB;
             dgvHDBanHang.Columns[0].HeaderText = "Mã hàng";
             dgvHDBanHang.Columns[1].HeaderText = "Tên hàng";
@@ -68,13 +66,13 @@ namespace NguyenThaoMinh_2121110235
         private void LoadInfoHoaDon()
         {
             string str;
-            str = "SELECT NgayBan FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
+            str = BUS.BUS.loadNgay(txtMaHDBan.Text);
             dtpNgayBan.Value = DateTime.Parse(Functions.GetFieldValues(str));
-            str = "SELECT MaNhanVien FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
+            str = BUS.BUS.loadMaNV(txtMaHDBan.Text);
             cboMaNhanVien.Text = Functions.GetFieldValues(str);
-            str = "SELECT MaKhach FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
+            str = BUS.BUS.loadMaKhach (txtMaHDBan.Text);
             cboMaKhach.Text = Functions.GetFieldValues(str);
-            str = "SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
+            str = BUS.BUS.loadTongTien(txtMaHDBan.Text);
             txtTongTien.Text = Functions.GetFieldValues(str);
             lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(txtTongTien.Text));
         }
@@ -95,11 +93,14 @@ namespace NguyenThaoMinh_2121110235
             txtTongTien.ReadOnly = true;
             txtGiamGia.Text = "0";
             txtTongTien.Text = "0";
-            Functions.FillCombo("SELECT MaKhach, TenKhach FROM tblKhach", cboMaKhach, "MaKhach", "MaKhach");
+            string sql= BUS.BUS.fillMaKhach();
+            Functions.FillCombo(sql, cboMaKhach, "MaKhach", "MaKhach");
             cboMaKhach.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaNhanVien, TenNhanVien FROM tblNhanVien", cboMaNhanVien, "MaNhanVien", "TenKhach");
+            sql = BUS.BUS.fillMaNhanVien();
+            Functions.FillCombo(sql, cboMaNhanVien, "MaNhanVien", "TenKhach");
             cboMaNhanVien.SelectedIndex = -1;
-            Functions.FillCombo("SELECT MaHang, TenHang FROM tblHang", cboMaHang, "MaHang", "MaHang");
+            sql = BUS.BUS.fillMaHang();
+            Functions.FillCombo(sql, cboMaHang, "MaHang", "MaHang");
             cboMaHang.SelectedIndex = -1;
             //Hiển thị thông tin của một hóa đơn được gọi từ form tìm kiếm
             if (txtMaHDBan.Text != "")
@@ -145,7 +146,7 @@ namespace NguyenThaoMinh_2121110235
         {
             string sql;
             double sl, SLcon, tong, Tongmoi;
-            sql = "SELECT MaHDBan FROM tblHDBan WHERE MaHDBan=N'" + txtMaHDBan.Text + "'";
+            sql = BUS.BUS.sqlLuu(txtMaHDBan.Text);
             if (!Functions.CheckKey(sql))
             {
                 // Mã hóa đơn chưa có, tiến hành lưu các thông tin chung
@@ -168,10 +169,7 @@ namespace NguyenThaoMinh_2121110235
                     cboMaKhach.Focus();
                     return;
                 }
-                sql = "INSERT INTO tblHDBan(MaHDBan, NgayBan, MaNhanVien, MaKhach, TongTien) VALUES (N'" + txtMaHDBan.Text.Trim() + "','" +
-                        Functions.ConvertDateTime(dtpNgayBan.Text.Trim()) + "',N'" + cboMaNhanVien.SelectedValue + "',N'" +
-                        cboMaKhach.SelectedValue + "'," + txtTongTien.Text + ")";
-                Functions.RunSQL(sql);
+                BUS.BUS.insertHoaDon(txtMaHDBan.Text,dtpNgayBan.Text, cboMaNhanVien.SelectedValue.ToString(), cboMaKhach.SelectedValue.ToString(), txtTongTien.Text);
             }
             // Lưu thông tin của các mặt hàng
             if (cboMaHang.Text.Trim().Length == 0)
@@ -193,7 +191,7 @@ namespace NguyenThaoMinh_2121110235
                 txtGiamGia.Focus();
                 return;
             }
-            sql = "SELECT MaHang FROM tblChiTietHDBan WHERE MaHang=N'" + cboMaHang.SelectedValue + "' AND MaHDBan = N'" + txtMaHDBan.Text.Trim() + "'";
+            sql = BUS.BUS.sqlktMaHang(cboMaHang.SelectedValue.ToString(), txtMaHDBan.Text);
             if (Functions.CheckKey(sql))
             {
                 MessageBox.Show("Mã hàng này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -202,7 +200,8 @@ namespace NguyenThaoMinh_2121110235
                 return;
             }
             // Kiểm tra xem số lượng hàng trong kho còn đủ để cung cấp không?
-            sl = Convert.ToDouble(Functions.GetFieldValues("SELECT SoLuong FROM tblHang WHERE MaHang = N'" + cboMaHang.SelectedValue + "'"));
+            sql=BUS.BUS.sqlktSoLuong(cboMaHang.SelectedValue.ToString());
+            sl = Convert.ToDouble(Functions.GetFieldValues(sql));
             if (Convert.ToDouble(txtSoLuong.Text) > sl)
             {
                 MessageBox.Show("Số lượng mặt hàng này chỉ còn " + sl, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -210,18 +209,19 @@ namespace NguyenThaoMinh_2121110235
                 txtSoLuong.Focus();
                 return;
             }
-            sql = "INSERT INTO tblChiTietHDBan(MaHDBan,MaHang,SoLuong,DonGia, GiamGia,ThanhTien) VALUES(N'" + txtMaHDBan.Text.Trim() + "',N'" + cboMaHang.SelectedValue + "'," + txtSoLuong.Text + "," + txtDonGiaBan.Text + "," + txtGiamGia.Text + "," + txtThanhTien.Text + ")";
-            Functions.RunSQL(sql);
+            BUS.BUS.insertCTHoaDon(txtMaHDBan.Text, cboMaHang.SelectedValue.ToString(), txtSoLuong.Text, txtDonGiaBan.Text, txtGiamGia.Text, txtThanhTien.Text);
             LoadDataGridView();
             // Cập nhật lại số lượng của mặt hàng vào bảng tblHang
             SLcon = sl - Convert.ToDouble(txtSoLuong.Text);
-            sql = "UPDATE tblHang SET SoLuong =" + SLcon + " WHERE MaHang= N'" + cboMaHang.SelectedValue + "'";
-            Functions.RunSQL(sql);
+            BUS.BUS.editCTHoaDon(SLcon, cboMaHang.SelectedValue.ToString());
+
             // Cập nhật lại tổng tiền cho hóa đơn bán
-            tong = Convert.ToDouble(Functions.GetFieldValues("SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'"));
+            sql = BUS.BUS.sqlTongTien(txtMaHDBan.Text);
+            tong = Convert.ToDouble(Functions.GetFieldValues(sql));
             Tongmoi = tong + Convert.ToDouble(txtThanhTien.Text);
-            sql = "UPDATE tblHDBan SET TongTien =" + Tongmoi + " WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
-            Functions.RunSQL(sql);
+            BUS.BUS.updateTongTien(Tongmoi, txtMaHDBan.Text);
+            //sql = "UPDATE tblHDBan SET TongTien =" + Tongmoi + " WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
+            //Functions.RunSQL(sql);
             txtTongTien.Text = Tongmoi.ToString();
             lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(Tongmoi.ToString()));
             ResetValuesHang();
@@ -245,18 +245,17 @@ namespace NguyenThaoMinh_2121110235
                 MaHangxoa = dgvHDBanHang.CurrentRow.Cells["MaHang"].Value.ToString();
                 SoLuongxoa = Convert.ToDouble(dgvHDBanHang.CurrentRow.Cells["SoLuong"].Value.ToString());
                 ThanhTienxoa = Convert.ToDouble(dgvHDBanHang.CurrentRow.Cells["ThanhTien"].Value.ToString());
-                sql = "DELETE tblChiTietHDBan WHERE MaHDBan=N'" + txtMaHDBan.Text + "' AND MaHang = N'" + MaHangxoa + "'";
-                Functions.RunSQL(sql);
+                BUS.BUS.deleteCTHDBan(txtMaHDBan.Text, MaHangxoa);
                 // Cập nhật lại số lượng cho các mặt hàng
-                sl = Convert.ToDouble(Functions.GetFieldValues("SELECT SoLuong FROM tblHang WHERE MaHang = N'" + MaHangxoa + "'"));
+                sql = BUS.BUS.sqlslMatHang(MaHangxoa);
+                sl = Convert.ToDouble(Functions.GetFieldValues(sql));
                 slcon = sl + SoLuongxoa;
-                sql = "UPDATE tblHang SET SoLuong =" + slcon + " WHERE MaHang= N'" + MaHangxoa + "'";
-                Functions.RunSQL(sql);
+                BUS.BUS.edittcMatHang(slcon, MaHangxoa);
                 // Cập nhật lại tổng tiền cho hóa đơn bán
-                tong = Convert.ToDouble(Functions.GetFieldValues("SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'"));
+                sql = BUS.BUS.sqlttTongTien(txtMaHDBan.Text);
+                tong = Convert.ToDouble(Functions.GetFieldValues(sql));
                 tongmoi = tong - ThanhTienxoa;
-                sql = "UPDATE tblHDBan SET TongTien =" + tongmoi + " WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
-                Functions.RunSQL(sql);
+                BUS.BUS.editTongHDBan(tongmoi, txtMaHDBan.Text);
                 txtTongTien.Text = tongmoi.ToString();
                 lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChuoi(Double.Parse(tongmoi.ToString()));
                 LoadDataGridView();
@@ -269,7 +268,8 @@ namespace NguyenThaoMinh_2121110235
             double sl, slcon, slxoa;
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string sql = "SELECT MaHang,SoLuong FROM tblChiTietHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
+                string sql=BUS.BUS.sqlxoaHDBan(txtMaHDBan.Text);
+                //string sql = "SELECT MaHang,SoLuong FROM tblChiTietHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
                 DataTable tblHang = Functions.GetDataToTable(sql);
                 for (int hang = 0; hang <= tblHang.Rows.Count - 1; hang++)
                 {

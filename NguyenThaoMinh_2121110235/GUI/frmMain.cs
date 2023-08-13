@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NguyenThaoMinh_2121110235.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -74,6 +75,13 @@ namespace NguyenThaoMinh_2121110235
             frmTimKiemHD.ShowDialog(); //Hiển thị
         }
 
-       
+        private void mnuNhapChatLieu_Click(object sender, EventArgs e)
+        {
+            frmNhapChatLieu frmNhapChatLieu=new frmNhapChatLieu();
+            frmNhapChatLieu.ShowDialog();
+
+
+
+    }
     }
 }

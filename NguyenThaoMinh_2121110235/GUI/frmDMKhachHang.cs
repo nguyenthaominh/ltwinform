@@ -24,10 +24,8 @@ namespace NguyenThaoMinh_2121110235
 
         }
         private void LoadDataGridView()
-        {
-            string sql;
-            sql = "SELECT * from tblKhach";
-            tblKH = Functions.GetDataToTable(sql); //Lấy dữ liệu từ bảng
+        { 
+            tblKH = BUS.BUS.LoadListKhachHang();
             dgvKhachHang.DataSource = tblKH; //Hiển thị vào dataGridView
             dgvKhachHang.Columns[0].HeaderText = "Mã khách";
             dgvKhachHang.Columns[1].HeaderText = "Tên khách";
@@ -92,7 +90,6 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql;
             if (txtMaKhach.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mã khách", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -118,20 +115,15 @@ namespace NguyenThaoMinh_2121110235
                 return;
             }
             //Kiểm tra đã tồn tại mã khách chưa
-            sql = "SELECT MaKhach FROM tblKhach WHERE MaKhach=N'" + txtMaKhach.Text.Trim() + "'";
-            if (Functions.CheckKey(sql))
+            bool kq = BUS.BUS.insertKhachHang(txtMaKhach.Text, txtTenKhach.Text, txtDiaChi.Text, mskDienThoai.Text);
+            if (!kq)
             {
-                MessageBox.Show("Mã khách này đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Mã chất liệu này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaKhach.Focus();
                 return;
-            }
-            //Chèn thêm
-            sql = "INSERT INTO tblKhach VALUES (N'" + txtMaKhach.Text.Trim() +
-                "',N'" + txtTenKhach.Text.Trim() + "',N'" + txtDiaChi.Text.Trim() + "','" + mskDienThoai.Text + "')";
-            Functions.RunSQL(sql);
+            }   
             LoadDataGridView();
             ResetValues();
-
             btnXoa.Enabled = true;
             btnThem.Enabled = true;
             btnSua.Enabled = true;
@@ -142,7 +134,6 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string sql;
             if (tblKH.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -171,10 +162,7 @@ namespace NguyenThaoMinh_2121110235
                 mskDienThoai.Focus();
                 return;
             }
-            sql = "UPDATE tblKhach SET TenKhach=N'" + txtTenKhach.Text.Trim().ToString() + "',DiaChi=N'" +
-                txtDiaChi.Text.Trim().ToString() + "',DienThoai='" + mskDienThoai.Text.ToString() +
-                "' WHERE MaKhach=N'" + txtMaKhach.Text + "'";
-            Functions.RunSQL(sql);
+            BUS.BUS.editKhachHang(txtTenKhach.Text, txtDiaChi.Text, mskDienThoai.Text, txtMaKhach.Text);
             LoadDataGridView();
             ResetValues();
             btnBoQua.Enabled = false;
@@ -182,7 +170,6 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string sql;
             if (tblKH.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,8 +182,7 @@ namespace NguyenThaoMinh_2121110235
             }
             if (MessageBox.Show("Bạn có muốn xoá bản ghi này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                sql = "DELETE tblKhach WHERE MaKhach=N'" + txtMaKhach.Text + "'";
-                Functions.RunSqlDel(sql);
+                BUS.BUS.deleteKhachHang(txtMaKhach.Text);
                 LoadDataGridView();
                 ResetValues();
             }

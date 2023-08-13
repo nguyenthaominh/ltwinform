@@ -31,9 +31,7 @@ namespace NguyenThaoMinh_2121110235
         }
         public void LoadDataGridView()
         {
-            string sql;
-            sql = "SELECT MaNhanVien,TenNhanVien,GioiTinh,DiaChi,DienThoai,NgaySinh FROm tblNhanVien";
-            tblNV = Functions.GetDataToTable(sql); //lấy dữ liệu
+            tblNV = BUS.BUS.LoadListNhanVien();
             dgvNhanVien.DataSource = tblNV;
             dgvNhanVien.Columns[0].HeaderText = "Mã nhân viên";
             dgvNhanVien.Columns[1].HeaderText = "Tên nhân viên";
@@ -87,7 +85,7 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql, gt;
+            string gt;
             if (txtMaNhanVien.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mã nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -129,16 +127,15 @@ namespace NguyenThaoMinh_2121110235
                 gt = "Nam";
             else
                 gt = "Nữ";
-            sql = "SELECT MaNhanVien FROM tblNhanVien WHERE MaNhanVien=N'" + txtMaNhanVien.Text.Trim() + "'";
-            if (Functions.CheckKey(sql))
+
+            bool kq = BUS.BUS.insertNhanVien(txtMaNhanVien.Text, txtTenNhanVien.Text,gt, txtDiaChi.Text, mskDienThoai.Text, dtpNgaySinh.Text);
+            if (!kq)
             {
                 MessageBox.Show("Mã nhân viên này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaNhanVien.Focus();
                 txtMaNhanVien.Text = "";
                 return;
             }
-            sql = "INSERT INTO tblNhanVien(MaNhanVien,TenNhanVien,GioiTinh, DiaChi,DienThoai, NgaySinh) VALUES (N'" + txtMaNhanVien.Text.Trim() + "',N'" + txtTenNhanVien.Text.Trim() + "',N'" + gt + "',N'" + txtDiaChi.Text.Trim() + "','" + mskDienThoai.Text + "','" + dtpNgaySinh.Value + "')";
-            Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValues();
             btnXoa.Enabled = true;
@@ -151,7 +148,7 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string sql, gt;
+            string gt;
             if (tblNV.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -197,12 +194,7 @@ namespace NguyenThaoMinh_2121110235
                 gt = "Nam";
             else
                 gt = "Nữ";
-            sql = "UPDATE tblNhanVien SET  TenNhanVien=N'" + txtTenNhanVien.Text.Trim().ToString() +
-                    "',DiaChi=N'" + txtDiaChi.Text.Trim().ToString() +
-                    "',DienThoai='" + mskDienThoai.Text.ToString() + "',GioiTinh=N'" + gt +
-                    "',NgaySinh='" + Functions.ConvertDateTime(dtpNgaySinh.Text) +
-                    "' WHERE MaNhanVien=N'" + txtMaNhanVien.Text + "'";
-            Functions.RunSQL(sql);
+            BUS.BUS.editNhanVien(txtTenNhanVien.Text, txtDiaChi.Text, mskDienThoai.Text,gt, dtpNgaySinh.Text, txtMaNhanVien.Text);
             LoadDataGridView();
             ResetValues();
             btnBoQua.Enabled = false;
@@ -223,8 +215,9 @@ namespace NguyenThaoMinh_2121110235
             }
             if (MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                sql = "DELETE tblNhanVien WHERE MaNhanVien=N'" + txtMaNhanVien.Text + "'";
-                Functions.RunSqlDel(sql);
+                BUS.BUS.deleteNhanVien(txtMaNhanVien.Text);
+                //sql = "DELETE tblNhanVien WHERE MaNhanVien=N'" + txtMaNhanVien.Text + "'";
+                //Functions.RunSqlDel(sql);
                 LoadDataGridView();
                 ResetValues();
             }

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
 using System.Drawing;
+using NguyenThaoMinh_2121110235.DTO;
 
 namespace NguyenThaoMinh_2121110235.Class
 {
@@ -307,6 +308,349 @@ namespace NguyenThaoMinh_2121110235.Class
             }
             return h;
         }
+        public class DAL_CHATLIEU
+        {
+            public static DataTable getChatLieu()
+            {
+                string sql = "SELECT MaChatLieu, TenChatLieu FROM tblChatLieu";
+                DataTable dt = new DataTable();
+                dt = Functions.GetDataToTable(sql);
+                return dt;
+            }
+            public static void deleteChatLieu(string maCL)
+            {
+                string sql = "DELETE tblChatLieu WHERE MaChatLieu=N'" + maCL + "'";
+                Class.Functions.RunSqlDel(sql);
+            }
+            public static void editChatLieu(string tenCL, string maCL)
+            {
+                string sql = "UPDATE tblChatLieu SET TenChatLieu=N'" +
+                tenCL.ToString() +
+                "' WHERE MaChatLieu=N'" + maCL + "'";
+                Class.Functions.RunSQL(sql);
+            }
 
+            public static void sqlChatLieu(string maCL)
+            {
+                string sql = "Select MaChatLieu From tblChatLieu where MaChatLieu=N'" + maCL.Trim() + "'";
+                Class.Functions.CheckKey(sql);
+            }
+            public static bool insertChatLieu(string tenCL, string maCL)
+            {
+                bool kq = true;
+                string sql = "Select MaChatLieu From tblChatLieu where MaChatLieu=N'" + maCL.Trim() + "'";
+                if (Class.Functions.CheckKey(sql))
+                {
+
+                    kq = false;
+                    return kq;
+                }
+                sql = "INSERT INTO tblChatLieu VALUES(N'" +
+                        maCL + "',N'" + tenCL + "')";
+                Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
+                return kq;
+            }
+
+        }
+        public class DAL_HANGHOA
+        {
+            public static DataTable getHangHoa()
+            {
+                string sql = "SELECT * from tblHang";
+                DataTable dt = new DataTable();
+                dt = Functions.GetDataToTable(sql);
+                return dt;
+            }
+            public static string loadChatLieu()
+            {
+                string sql = "SELECT * from tblChatLieu";
+                Class.Functions.RunSqlDel(sql);
+                return sql;
+            }
+            public static string cboMaChatLieu(string MaChatLieu)
+            {
+                string sql = "SELECT TenChatLieu FROM tblChatLieu WHERE MaChatLieu=N'" + MaChatLieu + "'";
+                string dt = Functions.GetFieldValues(sql);
+                return dt;
+            }
+            public static string loadAnh(string MaHang)
+            {
+                string sql = "SELECT Anh FROM tblHang WHERE MaHang=N'" + MaHang + "'";
+                string dt = Functions.GetFieldValues(sql);
+                return dt;
+            }
+            public static string loadGhiChu(string MaHang)
+            {
+                string sql = "SELECT Ghichu FROM tblHang WHERE MaHang = N'" + MaHang + "'";
+                string dt = Functions.GetFieldValues(sql);
+                return dt;
+            }
+            public static bool insertHangHoa(string maHang, string tenHang, string cboMaChatLieu, string soLuong, string donGiaNhap, string donGiaBan, string hinhAnh, string ghiChu)
+            {
+                bool kq = true;
+                string sql = "SELECT MaHang FROM tblHang WHERE MaHang=N'" + maHang.Trim() + "'";
+                if (Class.Functions.CheckKey(sql))
+                {
+                    kq = false;
+                    return kq;
+                }
+                sql = "INSERT INTO tblHang(MaHang,TenHang,MaChatLieu,SoLuong,DonGiaNhap, DonGiaBan,Anh,Ghichu) VALUES(N'"
+                + maHang.Trim() + "',N'" + tenHang.Trim() +
+                "',N'" + cboMaChatLieu +
+                "'," + soLuong.Trim() + "," + donGiaNhap +
+                "," + donGiaBan + ",'" + hinhAnh + "',N'" + ghiChu.Trim() + "')";
+                Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
+                return kq;
+            }
+            public static void editHangHoa(string tenHang, string cboMaChatLieu, string soLuong, string hinhAnh, string ghiChu, string maHang)
+            {
+                string sql = "UPDATE tblHang SET TenHang=N'" + tenHang.Trim().ToString() +
+                "',MaChatLieu=N'" + cboMaChatLieu.ToString() +
+                "',SoLuong=" + soLuong +
+                ",Anh='" + hinhAnh + "',Ghichu=N'" + ghiChu + "' WHERE MaHang=N'" + maHang + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static void deleteHangHoa(string maHangHoa)
+            {
+                string sql = "DELETE tblHang WHERE MaHang=N'" + maHangHoa + "'";
+                Class.Functions.RunSqlDel(sql);
+            }
+            public static DataTable timkiemHangHoa(string maHangHoa, string tenHangHoa, string cboMaChatLieu, string cboMaCL)
+            {
+                string sql = "SELECT * from tblHang WHERE 1=1";
+                if (maHangHoa != "")
+                    sql += " AND MaHang LIKE N'%" + maHangHoa + "%'";
+                if (tenHangHoa != "")
+                    sql += " AND TenHang LIKE N'%" + tenHangHoa + "%'";
+                if (cboMaChatLieu != "")
+                    sql += " AND MaChatLieu LIKE N'%" + cboMaCL + "%'";
+                DataTable tblH = new DataTable();
+                tblH = Functions.GetDataToTable(sql);
+                return tblH;
+            }
+            public static DataTable hienthiDs()
+            {
+                string sql = "SELECT MaHang,TenHang,MaChatLieu,SoLuong,DonGiaNhap,DonGiaBan,Anh,Ghichu FROM tblHang";
+                DataTable dt = new DataTable();
+                dt = Functions.GetDataToTable(sql);
+                return dt;
+            }
+        }
+        public class DAL_KHACHHANG
+        {
+            public static DataTable getKhachHang()
+            {
+                string sql = "SELECT * from tblKhach";
+                DataTable dt = new DataTable();
+                dt = Functions.GetDataToTable(sql);
+                return dt;
+            }
+            public static bool insertKhachHang(string maKhach, string tenKhach, string diaChi, string dienThoai)
+            {
+                bool kq = true;
+                string sql = "SELECT MaKhach FROM tblKhach WHERE MaKhach=N'" + maKhach.Trim() + "'";
+                if (Class.Functions.CheckKey(sql))
+                {
+                    kq = false;
+                    return kq;
+                }
+                sql = "INSERT INTO tblKhach VALUES (N'" + maKhach.Trim() +
+                "',N'" + tenKhach.Trim() + "',N'" + diaChi.Trim() + "','" + dienThoai + "')";
+                Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
+                return kq;
+            }
+            public static void editKhachHang(string tenKhach, string diaChi, string dienThoai, string maKhach)
+            {
+                string sql = "UPDATE tblKhach SET TenKhach=N'" + tenKhach.Trim().ToString() + "',DiaChi=N'" +
+                diaChi.Trim().ToString() + "',DienThoai='" + dienThoai.ToString() +
+                "' WHERE MaKhach=N'" + maKhach + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static void deleteKhachHang(string maKhachHang)
+            {
+                string sql = "DELETE tblKhach WHERE MaKhach=N'" + maKhachHang + "'";
+                Class.Functions.RunSqlDel(sql);
+            }
+        }
+        public class DAL_NHANVIEN
+        {
+            public static DataTable getNhanVien()
+            {
+                string sql = "SELECT MaNhanVien,TenNhanVien,GioiTinh,DiaChi,DienThoai,NgaySinh FROm tblNhanVien";
+                DataTable dt = new DataTable();
+                dt = Functions.GetDataToTable(sql);
+                return dt;
+            }
+            public static bool insertNhanVien(string maNhanVien, string tenNhanVien, string gt, string diaChi, string dienThoai, string NgaySinh)
+            {
+                bool kq = true;
+                string sql = "SELECT MaNhanVien FROM tblNhanVien WHERE MaNhanVien=N'" + maNhanVien.Trim() + "'";
+                if (Class.Functions.CheckKey(sql))
+                {
+                    kq = false;
+                    return kq;
+                }
+                sql = "INSERT INTO tblNhanVien(MaNhanVien,TenNhanVien,GioiTinh, DiaChi,DienThoai, NgaySinh) VALUES (N'" + maNhanVien.Trim() + "',N'" + tenNhanVien.Trim() + "',N'" + gt + "',N'" + diaChi.Trim() + "','" + dienThoai + "','" + NgaySinh.ToString() + "')";
+                Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
+                return kq;
+            }
+            public static void editNhanVien(string tenNhanVien, string diaChi, string dienThoai, string gt, string ngaySinh, string maNhanVien)
+            {
+                string sql = "UPDATE tblNhanVien SET  TenNhanVien=N'" + tenNhanVien.Trim().ToString() +
+                    "',DiaChi=N'" + diaChi.Trim().ToString() +
+                    "',DienThoai='" + dienThoai.ToString() + "',GioiTinh=N'" + gt +
+                    "',NgaySinh='" + Functions.ConvertDateTime(ngaySinh) +
+                    "' WHERE MaNhanVien=N'" + maNhanVien + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static void deleteNhanVien(string maNhanVien)
+            {
+                string sql = "DELETE tblNhanVien WHERE MaNhanVien = N'" + maNhanVien + "'";
+                Class.Functions.RunSqlDel(sql);
+            }
+        }
+        public class DAL_HOADONBAN
+        {
+            public static DataTable getHoaDonBan(string maHDBan)
+            {
+                string sql = "SELECT a.MaHang, b.TenHang, a.SoLuong, b.DonGiaBan, a.GiamGia,a.ThanhTien FROM tblChiTietHDBan AS a, tblHang AS b WHERE a.MaHDBan = N'" + maHDBan + "' AND a.MaHang=b.MaHang";
+                DataTable dt = new DataTable();
+                dt = Functions.GetDataToTable(sql);
+                return dt;
+            }
+            public static string loadNgay(string maHDBan)
+            {
+                string sql = "SELECT NgayBan FROM tblHDBan WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string loadMaNV(string maHDBan)
+            {
+                string sql = "SELECT MaNhanVien FROM tblHDBan WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string loadMaKhach(string maHDBan)
+            {
+                string sql = "SELECT MaKhach FROM tblHDBan WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string loadTongTien(string maHDBan)
+            {
+                string sql = "SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string fillMaKhach()
+            {
+                string sql = "SELECT MaKhach, TenKhach FROM tblKhach";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string fillMaNhanVien()
+            {
+                string sql = "SELECT MaNhanVien, TenNhanVien FROM tblNhanVien";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string fillMaHang()
+            {
+                string sql = "SELECT MaHang, TenHang FROM tblHang";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string sqlLuu(string maHDBan)
+            {
+                string sql = "SELECT MaHDBan FROM tblHDBan WHERE MaHDBan=N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static void insertHoaDon(string maHDBan,string NgayBan,string cboMaNhanVien, string cboMaKhach,string tongTien)
+            {
+                string sql = "INSERT INTO tblHDBan(MaHDBan, NgayBan, MaNhanVien, MaKhach, TongTien) VALUES (N'" + maHDBan.Trim() + "','" +
+                        Functions.ConvertDateTime(NgayBan.Trim()) + "',N'" + cboMaNhanVien + "',N'" +
+                        cboMaKhach + "'," + tongTien + ")";
+                Class.Functions.RunSQL(sql);
+            }
+            public static string sqlktMaHang(string cboMaHang, string maHDBan)
+            {
+                string sql = "SELECT MaHang FROM tblChiTietHDBan WHERE MaHang=N'" + cboMaHang + "' AND MaHDBan = N'" + maHDBan.Trim() + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string sqlktSoLuong(string cboMaHang)
+            {
+                string sql = "SELECT SoLuong FROM tblHang WHERE MaHang = N'" + cboMaHang + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static void insertCTHoaDon(string maHDBan, string cboMaHang, string SoLuong, string DonGiaBan, string GiamGia, string ThanhTien)
+            {
+                string sql = "INSERT INTO tblChiTietHDBan(MaHDBan,MaHang,SoLuong,DonGia, GiamGia,ThanhTien) VALUES(N'" + maHDBan.Trim() + "',N'" + cboMaHang + "'," + SoLuong + "," + DonGiaBan + "," + GiamGia + "," + ThanhTien + ")";
+                Class.Functions.RunSQL(sql);
+            }
+            public static void editCTHoaDon(double SLcon, string cboMaHang)
+            {
+                string sql = "UPDATE tblHang SET SoLuong =" + SLcon + " WHERE MaHang= N'" + cboMaHang + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static string sqlTongTien(string maHoaDon)
+            {
+                string sql = "SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + maHoaDon + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static void updateTongTien(double Tongmoi, string maHDBan)
+            {
+                string sql = "UPDATE tblHDBan SET TongTien =" + Tongmoi + " WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static void deleteCTHDBan(string maHDBan, string MaHangxoa)
+            {
+                string sql = "DELETE tblChiTietHDBan WHERE MaHDBan=N'" + maHDBan + "' AND MaHang = N'" + MaHangxoa + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static void edittcMatHang(double slcon, string MaHangxoa)
+            {
+                string sql = "UPDATE tblHang SET SoLuong =" + slcon + " WHERE MaHang= N'" + MaHangxoa + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static string sqlslMatHang(string MaHangxoa)
+            {
+                string sql = "SELECT SoLuong FROM tblHang WHERE MaHang = N'" + MaHangxoa + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string sqlttTongTien(string MaHDBan)
+            {
+                string sql = "SELECT TongTien FROM tblHDBan WHERE MaHDBan = N'" + MaHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static void editTongHDBan(double tongmoi, string maHDBan)
+            {
+                string sql = "UPDATE tblHDBan SET TongTien =" + tongmoi + " WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+            }
+            public static string sqlxoaHDBan(string maHDBan)
+            {
+                string sql = "SELECT MaHang,SoLuong FROM tblChiTietHDBan WHERE MaHDBan = N'" + maHDBan + "'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static string sqlslMatHang()
+            {
+                string sql = "SELECT SoLuong FROM tblHang WHERE MaHang = N'";
+                Class.Functions.RunSQL(sql);
+                return sql;
+            }
+            public static void editslMatHang(double slcon, string hang)
+            {
+                string sql = "UPDATE tblHang SET SoLuong =" + slcon + " WHERE MaHang= N'" + hang + "'";
+                Class.Functions.RunSQL(sql);
+            }
+
+        }
     }
 }
