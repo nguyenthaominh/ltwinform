@@ -269,7 +269,6 @@ namespace NguyenThaoMinh_2121110235
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 string sql=BUS.BUS.sqlxoaHDBan(txtMaHDBan.Text);
-                //string sql = "SELECT MaHang,SoLuong FROM tblChiTietHDBan WHERE MaHDBan = N'" + txtMaHDBan.Text + "'";
                 DataTable tblHang = Functions.GetDataToTable(sql);
                 for (int hang = 0; hang <= tblHang.Rows.Count - 1; hang++)
                 {

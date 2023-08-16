@@ -86,7 +86,6 @@ namespace NguyenThaoMinh_2121110235
         private void dgvHang_Click(object sender, EventArgs e)
         {
             string MaChatLieu;
-            string sql;
             if (btnThem.Enabled == false)
             {
                 MessageBox.Show("Đang ở chế độ thêm mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -101,7 +100,7 @@ namespace NguyenThaoMinh_2121110235
             txtMaHang.Text = dgvHang.CurrentRow.Cells["MaHang"].Value.ToString();
             txtTenHang.Text = dgvHang.CurrentRow.Cells["TenHang"].Value.ToString();
             MaChatLieu = dgvHang.CurrentRow.Cells["MaChatLieu"].Value.ToString();
-            cboMaChatLieu.Text=BUS.BUS.cboMaChatLieu(MaChatLieu);
+            cboMaChatLieu.Text = BUS.BUS.cboMaChatLieu(MaChatLieu);
             txtSoLuong.Text = dgvHang.CurrentRow.Cells["SoLuong"].Value.ToString();
             txtDonGiaNhap.Text = dgvHang.CurrentRow.Cells["DonGiaNhap"].Value.ToString();
             txtDonGiaBan.Text = dgvHang.CurrentRow.Cells["DonGiaBan"].Value.ToString();
@@ -130,7 +129,6 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string sql;
             if (txtMaHang.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập mã hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -161,7 +159,7 @@ namespace NguyenThaoMinh_2121110235
                 MessageBox.Show("Mã chất liệu này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtMaHang.Focus();
                 return;
-            }      
+            }
             LoadDataGridView();
             //ResetValues();
             btnXoa.Enabled = true;
@@ -203,6 +201,7 @@ namespace NguyenThaoMinh_2121110235
                 txtAnh.Focus();
                 return;
             }
+
             BUS.BUS.editHangHoa(txtTenHang.Text, cboMaChatLieu.SelectedValue.ToString(), txtSoLuong.Text, txtAnh.Text, txtGhiChu.Text, txtMaHang.Text);
             LoadDataGridView();
             ResetValues();
@@ -211,7 +210,7 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-          
+
             if (tblH.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -280,6 +279,28 @@ namespace NguyenThaoMinh_2121110235
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+                e.Handled = false;
+            else e.Handled = true;
+        }
+
+        private void txtDonGiaNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+                e.Handled = false;
+            else e.Handled = true;
+        }
+
+        private void txtDonGiaBan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+                e.Handled = false;
+            else e.Handled = true;
         }
     }
 }

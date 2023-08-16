@@ -262,6 +262,7 @@
             this.txtDonGiaBan.Name = "txtDonGiaBan";
             this.txtDonGiaBan.Size = new System.Drawing.Size(161, 26);
             this.txtDonGiaBan.TabIndex = 8;
+            this.txtDonGiaBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGiaBan_KeyPress);
             // 
             // txtDonGiaNhap
             // 
@@ -269,6 +270,7 @@
             this.txtDonGiaNhap.Name = "txtDonGiaNhap";
             this.txtDonGiaNhap.Size = new System.Drawing.Size(161, 26);
             this.txtDonGiaNhap.TabIndex = 8;
+            this.txtDonGiaNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGiaNhap_KeyPress);
             // 
             // txtSoLuong
             // 
@@ -276,6 +278,7 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(161, 26);
             this.txtSoLuong.TabIndex = 8;
+            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // txtTenHang
             // 

@@ -1,4 +1,5 @@
-﻿using NguyenThaoMinh_2121110235.DAL;
+﻿using NguyenThaoMinh_2121110235.Class;
+using NguyenThaoMinh_2121110235.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using COMExcel = Microsoft.Office.Interop.Excel;
 namespace NguyenThaoMinh_2121110235.GUI
 {
     public partial class frmNhapChatLieu : Form
@@ -52,6 +54,7 @@ namespace NguyenThaoMinh_2121110235.GUI
                     MessageBox.Show(ex.Message);
                 }
             }
+            txtDuongDan.Text=file;
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -64,20 +67,57 @@ namespace NguyenThaoMinh_2121110235.GUI
                         {
                             comm.Connection = conn;
                             conn.Open();
-                            for (int i = 0; i < dgvChatLieu.Rows.Count; i++)
+                            for (int i = 0; i < dgvChatLieu.Rows.Count - 1; i++)
+                            {
+                                sql= "Select MaChatLieu From tblChatLieu where MaChatLieu=N'" + dgvChatLieu.Rows[i].Cells["Mã chất liệu"].Value?.ToString() + "'";
+                                if (Class.Functions.CheckKey(sql))
+                                {
+                                    MessageBox.Show("Mã chất liệu này đã có, bạn phải nhập mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+                                // comm.CommandText = sql;
+                                ////Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
+                                //comm.ExecuteNonQuery();
+                            }
+
+                            for (int i = 0; i < dgvChatLieu.Rows.Count-1; i++)
                             {
                                 sql = "INSERT INTO tblChatLieu VALUES(N'" +
-                        dgvChatLieu.Rows[i].Cells["Mã chất liệu"].Value.ToString() + "',N'" + dgvChatLieu.Rows[i].Cells["Tên chất liệu"].Value.ToString() + "')";
+                                dgvChatLieu.Rows[i].Cells["Mã chất liệu"].Value?.ToString() + "',N'" + dgvChatLieu.Rows[i].Cells["Tên chất liệu"].Value?.ToString() + "')";
 
                                 comm.CommandText = sql;
-                                Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
+                                //Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
                                 comm.ExecuteNonQuery();
                             }
+                            conn.Close();
+                            MessageBox.Show("Đã thêm dữ liệu");
                         }
                     }
                 }
 
-
-
-            }
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
+
+        private void btnMau_Click(object sender, EventArgs e)
+        {
+            // Khởi động chương trình Excel
+            COMExcel.Application exApp = new COMExcel.Application();
+            COMExcel.Workbook exBook; //Trong 1 chương trình Excel có nhiều Workbook
+            COMExcel.Worksheet exSheet; //Trong 1 Workbook có nhiều Worksheet
+            COMExcel.Range exRange;
+            exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
+            exSheet = exBook.Worksheets[1];
+            // Định dạng chung
+            exRange = exSheet.Cells[1, 1];
+            exRange.Range["A1:A1"].Value = "Mã chất liệu";
+            exRange.Range["B1:B1"].Value = "Tên chất liệu";
+            exRange.Range["A2:A2"].Value = "CL01";
+            exRange.Range["B2:B2"].Value = "Vải";
+            exRange.Range["A3:A3"].Value = "CL02";
+            exRange.Range["B3:B3"].Value = "Kim Loại";
+            exApp.Visible = true;
+        }
+    }
+}

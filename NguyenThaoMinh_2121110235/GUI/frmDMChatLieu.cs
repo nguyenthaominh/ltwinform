@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient; //Sử dụng thư viện để làm việc SQL server
 using NguyenThaoMinh_2121110235.Class; //Sử dụng class Functions.cs
+using NguyenThaoMinh_2121110235.GUI;
 
 namespace NguyenThaoMinh_2121110235
 {
@@ -173,6 +174,17 @@ namespace NguyenThaoMinh_2121110235
         private void btnDong_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+           frmNhapChatLieu NhapChatLieu = new frmNhapChatLieu(); //Khởi tạo đối tượng
+           NhapChatLieu.ShowDialog(); //Hiển thị
+        }
+
+        private void btnFileMau_Click(object sender, EventArgs e)
+        {
+            LoadDataGridView();
         }
     }
 }

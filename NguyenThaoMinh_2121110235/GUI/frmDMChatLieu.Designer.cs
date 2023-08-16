@@ -43,6 +43,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvChatLieu = new System.Windows.Forms.DataGridView();
+            this.btnFileMau = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChatLieu)).BeginInit();
@@ -139,6 +141,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnUpdate);
+            this.panel2.Controls.Add(this.btnFileMau);
             this.panel2.Controls.Add(this.txtTenChatLieu);
             this.panel2.Controls.Add(this.txtMaChatLieu);
             this.panel2.Controls.Add(this.label3);
@@ -205,6 +209,26 @@
             this.dgvChatLieu.TabIndex = 1;
             this.dgvChatLieu.Click += new System.EventHandler(this.dgvChatLieu_Click);
             // 
+            // btnFileMau
+            // 
+            this.btnFileMau.Location = new System.Drawing.Point(518, 31);
+            this.btnFileMau.Name = "btnFileMau";
+            this.btnFileMau.Size = new System.Drawing.Size(124, 41);
+            this.btnFileMau.TabIndex = 5;
+            this.btnFileMau.Text = "Cập nhập";
+            this.btnFileMau.UseVisualStyleBackColor = true;
+            this.btnFileMau.Click += new System.EventHandler(this.btnFileMau_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(491, 77);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(189, 41);
+            this.btnUpdate.TabIndex = 6;
+            this.btnUpdate.Text = "Nhập dữ liệu Excel";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmDMChatLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -241,5 +265,7 @@
         private System.Windows.Forms.DataGridView dgvChatLieu;
         private System.Windows.Forms.TextBox txtTenChatLieu;
         private System.Windows.Forms.TextBox txtMaChatLieu;
+        private System.Windows.Forms.Button btnFileMau;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
