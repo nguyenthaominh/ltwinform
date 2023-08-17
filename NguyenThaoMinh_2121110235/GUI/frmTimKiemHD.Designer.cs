@@ -50,6 +50,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTKHoaDon = new System.Windows.Forms.DataGridView();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -62,9 +65,9 @@
             this.panel1.Controls.Add(this.btnTimLai);
             this.panel1.Controls.Add(this.btnTimKiem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 389);
+            this.panel1.Location = new System.Drawing.Point(0, 613);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 61);
+            this.panel1.Size = new System.Drawing.Size(928, 61);
             this.panel1.TabIndex = 3;
             // 
             // btnDong
@@ -110,9 +113,9 @@
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 357);
+            this.panel2.Location = new System.Drawing.Point(0, 581);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 32);
+            this.panel2.Size = new System.Drawing.Size(928, 32);
             this.panel2.TabIndex = 4;
             // 
             // label1
@@ -143,7 +146,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(800, 165);
+            this.panel3.Size = new System.Drawing.Size(928, 165);
             this.panel3.TabIndex = 5;
             // 
             // label8
@@ -262,15 +265,36 @@
             this.dgvTKHoaDon.Name = "dgvTKHoaDon";
             this.dgvTKHoaDon.RowHeadersWidth = 62;
             this.dgvTKHoaDon.RowTemplate.Height = 28;
-            this.dgvTKHoaDon.Size = new System.Drawing.Size(800, 192);
+            this.dgvTKHoaDon.Size = new System.Drawing.Size(928, 416);
             this.dgvTKHoaDon.TabIndex = 6;
             this.dgvTKHoaDon.DoubleClick += new System.EventHandler(this.dgvTKHoaDon_DoubleClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(8, 8);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(113, 24);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // frmTimKiemHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(928, 674);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvTKHoaDon);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -287,6 +311,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKHoaDon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -313,5 +338,8 @@
         private System.Windows.Forms.TextBox txtMaKhach;
         private System.Windows.Forms.TextBox txtMaHDBan;
         private System.Windows.Forms.Label label8;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

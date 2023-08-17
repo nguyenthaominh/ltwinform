@@ -67,9 +67,9 @@
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 413);
+            this.panel1.Location = new System.Drawing.Point(0, 613);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 61);
+            this.panel1.Size = new System.Drawing.Size(928, 61);
             this.panel1.TabIndex = 0;
             // 
             // btnIn
@@ -177,7 +177,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(728, 154);
+            this.panel2.Size = new System.Drawing.Size(928, 154);
             this.panel2.TabIndex = 1;
             // 
             // dtpNgaySinh
@@ -308,7 +308,7 @@
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.RowHeadersWidth = 62;
             this.dgvNhanVien.RowTemplate.Height = 28;
-            this.dgvNhanVien.Size = new System.Drawing.Size(728, 259);
+            this.dgvNhanVien.Size = new System.Drawing.Size(928, 459);
             this.dgvNhanVien.TabIndex = 2;
             this.dgvNhanVien.Click += new System.EventHandler(this.dgvNhanVien_Click);
             // 
@@ -316,7 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 474);
+            this.ClientSize = new System.Drawing.Size(928, 674);
             this.Controls.Add(this.dgvNhanVien);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

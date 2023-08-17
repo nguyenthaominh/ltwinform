@@ -202,7 +202,7 @@ namespace NguyenThaoMinh_2121110235
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string sql;
+            
             if (tblNV.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

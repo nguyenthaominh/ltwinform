@@ -50,6 +50,7 @@
             this.trợGiúpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trợGiúpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vàiNétToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNhapChatLieu = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.mnuNhapChatLieu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -77,7 +77,7 @@
             this.trợGiúpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(900, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -113,33 +113,33 @@
             // 
             this.mnuChatLieu.Name = "mnuChatLieu";
             this.mnuChatLieu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.mnuChatLieu.Size = new System.Drawing.Size(244, 34);
+            this.mnuChatLieu.Size = new System.Drawing.Size(270, 34);
             this.mnuChatLieu.Text = "&Chất liệu";
             this.mnuChatLieu.Click += new System.EventHandler(this.mnuChatLieu_Click);
             // 
             // mnuHangHoa
             // 
             this.mnuHangHoa.Name = "mnuHangHoa";
-            this.mnuHangHoa.Size = new System.Drawing.Size(244, 34);
+            this.mnuHangHoa.Size = new System.Drawing.Size(270, 34);
             this.mnuHangHoa.Text = "&Hàng hóa";
             this.mnuHangHoa.Click += new System.EventHandler(this.mnuHangHoa_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(241, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(267, 6);
             // 
             // mnuNhanVien
             // 
             this.mnuNhanVien.Name = "mnuNhanVien";
-            this.mnuNhanVien.Size = new System.Drawing.Size(244, 34);
+            this.mnuNhanVien.Size = new System.Drawing.Size(270, 34);
             this.mnuNhanVien.Text = "&Nhân viên";
             this.mnuNhanVien.Click += new System.EventHandler(this.mnuNhanVien_Click);
             // 
             // mnuKhachHang
             // 
             this.mnuKhachHang.Name = "mnuKhachHang";
-            this.mnuKhachHang.Size = new System.Drawing.Size(244, 34);
+            this.mnuKhachHang.Size = new System.Drawing.Size(270, 34);
             this.mnuKhachHang.Text = "&Khách hàng";
             this.mnuKhachHang.Click += new System.EventHandler(this.mnuKhachHang_Click);
             // 
@@ -154,7 +154,7 @@
             // mnuHoaDonBan
             // 
             this.mnuHoaDonBan.Name = "mnuHoaDonBan";
-            this.mnuHoaDonBan.Size = new System.Drawing.Size(270, 34);
+            this.mnuHoaDonBan.Size = new System.Drawing.Size(219, 34);
             this.mnuHoaDonBan.Text = "&Hóa đơn bán";
             this.mnuHoaDonBan.Click += new System.EventHandler(this.mnuHoaDonBan_Click);
             // 
@@ -171,20 +171,20 @@
             // mnuTimKiemHD
             // 
             this.mnuTimKiemHD.Name = "mnuTimKiemHD";
-            this.mnuTimKiemHD.Size = new System.Drawing.Size(270, 34);
+            this.mnuTimKiemHD.Size = new System.Drawing.Size(206, 34);
             this.mnuTimKiemHD.Text = "Hóa đơn";
             this.mnuTimKiemHD.Click += new System.EventHandler(this.mnuTimKiemHD_Click);
             // 
             // hàngToolStripMenuItem
             // 
             this.hàngToolStripMenuItem.Name = "hàngToolStripMenuItem";
-            this.hàngToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.hàngToolStripMenuItem.Size = new System.Drawing.Size(206, 34);
             this.hàngToolStripMenuItem.Text = "Hàng";
             // 
             // kháchHàngToolStripMenuItem1
             // 
             this.kháchHàngToolStripMenuItem1.Name = "kháchHàngToolStripMenuItem1";
-            this.kháchHàngToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.kháchHàngToolStripMenuItem1.Size = new System.Drawing.Size(206, 34);
             this.kháchHàngToolStripMenuItem1.Text = "Khách hàng";
             // 
             // báoCáoToolStripMenuItem
@@ -199,13 +199,13 @@
             // hàngTồnToolStripMenuItem
             // 
             this.hàngTồnToolStripMenuItem.Name = "hàngTồnToolStripMenuItem";
-            this.hàngTồnToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.hàngTồnToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.hàngTồnToolStripMenuItem.Text = "Hàng tồn";
             // 
             // doanhThuToolStripMenuItem
             // 
             this.doanhThuToolStripMenuItem.Name = "doanhThuToolStripMenuItem";
-            this.doanhThuToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.doanhThuToolStripMenuItem.Size = new System.Drawing.Size(198, 34);
             this.doanhThuToolStripMenuItem.Text = "Doanh thu";
             // 
             // trợGiúpToolStripMenuItem
@@ -221,23 +221,30 @@
             // trợGiúpToolStripMenuItem1
             // 
             this.trợGiúpToolStripMenuItem1.Name = "trợGiúpToolStripMenuItem1";
-            this.trợGiúpToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.trợGiúpToolStripMenuItem1.Size = new System.Drawing.Size(234, 34);
             this.trợGiúpToolStripMenuItem1.Text = "Trợ giúp";
             // 
             // vàiNétToolStripMenuItem
             // 
             this.vàiNétToolStripMenuItem.Name = "vàiNétToolStripMenuItem";
-            this.vàiNétToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.vàiNétToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
             this.vàiNétToolStripMenuItem.Text = "Vài nét";
+            // 
+            // mnuNhapChatLieu
+            // 
+            this.mnuNhapChatLieu.Name = "mnuNhapChatLieu";
+            this.mnuNhapChatLieu.Size = new System.Drawing.Size(234, 34);
+            this.mnuNhapChatLieu.Text = "Nhập Chất Liệu";
+            this.mnuNhapChatLieu.Click += new System.EventHandler(this.mnuNhapChatLieu_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 435);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 535);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 32);
+            this.statusStrip1.Size = new System.Drawing.Size(900, 32);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -253,7 +260,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Coral;
-            this.label1.Location = new System.Drawing.Point(230, 134);
+            this.label1.Location = new System.Drawing.Point(302, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(430, 53);
             this.label1.TabIndex = 6;
@@ -265,7 +272,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Coral;
-            this.label2.Location = new System.Drawing.Point(279, 201);
+            this.label2.Location = new System.Drawing.Point(341, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(332, 39);
             this.label2.TabIndex = 6;
@@ -289,7 +296,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 402);
+            this.panel1.Size = new System.Drawing.Size(900, 502);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
@@ -297,23 +304,16 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(98, 134);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 92);
+            this.pictureBox1.Size = new System.Drawing.Size(114, 109);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            // 
-            // mnuNhapChatLieu
-            // 
-            this.mnuNhapChatLieu.Name = "mnuNhapChatLieu";
-            this.mnuNhapChatLieu.Size = new System.Drawing.Size(270, 34);
-            this.mnuNhapChatLieu.Text = "Nhập Chất Liệu";
-            this.mnuNhapChatLieu.Click += new System.EventHandler(this.mnuNhapChatLieu_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 467);
+            this.ClientSize = new System.Drawing.Size(900, 567);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.statusStrip1);

@@ -61,9 +61,9 @@
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 413);
+            this.panel1.Location = new System.Drawing.Point(0, 613);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 61);
+            this.panel1.Size = new System.Drawing.Size(928, 61);
             this.panel1.TabIndex = 0;
             // 
             // btnDong
@@ -155,7 +155,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(728, 128);
+            this.panel2.Size = new System.Drawing.Size(928, 128);
             this.panel2.TabIndex = 1;
             // 
             // mskDienThoai
@@ -247,7 +247,7 @@
             this.dgvKhachHang.Name = "dgvKhachHang";
             this.dgvKhachHang.RowHeadersWidth = 62;
             this.dgvKhachHang.RowTemplate.Height = 28;
-            this.dgvKhachHang.Size = new System.Drawing.Size(728, 285);
+            this.dgvKhachHang.Size = new System.Drawing.Size(928, 485);
             this.dgvKhachHang.TabIndex = 2;
             this.dgvKhachHang.Click += new System.EventHandler(this.dgvKhachHang_Click);
             // 
@@ -255,7 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(728, 474);
+            this.ClientSize = new System.Drawing.Size(928, 674);
             this.Controls.Add(this.dgvKhachHang);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

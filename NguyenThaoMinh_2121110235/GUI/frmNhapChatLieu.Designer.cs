@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapChatLieu));
             this.dgvChatLieu = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDong = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnMau = new System.Windows.Forms.Button();
+            this.txtDuongDan = new System.Windows.Forms.TextBox();
             this.btn_Upload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.txtDuongDan = new System.Windows.Forms.TextBox();
-            this.btnMau = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChatLieu)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,7 +52,7 @@
             this.dgvChatLieu.Name = "dgvChatLieu";
             this.dgvChatLieu.RowHeadersWidth = 62;
             this.dgvChatLieu.RowTemplate.Height = 28;
-            this.dgvChatLieu.Size = new System.Drawing.Size(800, 261);
+            this.dgvChatLieu.Size = new System.Drawing.Size(928, 485);
             this.dgvChatLieu.TabIndex = 7;
             // 
             // panel1
@@ -59,9 +60,9 @@
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnLuu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 389);
+            this.panel1.Location = new System.Drawing.Point(0, 613);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 61);
+            this.panel1.Size = new System.Drawing.Size(928, 61);
             this.panel1.TabIndex = 8;
             // 
             // btnDong
@@ -98,12 +99,29 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 128);
+            this.panel2.Size = new System.Drawing.Size(928, 128);
             this.panel2.TabIndex = 6;
+            // 
+            // btnMau
+            // 
+            this.btnMau.Location = new System.Drawing.Point(644, 61);
+            this.btnMau.Name = "btnMau";
+            this.btnMau.Size = new System.Drawing.Size(88, 40);
+            this.btnMau.TabIndex = 7;
+            this.btnMau.Text = "Tải mẫu";
+            this.btnMau.UseVisualStyleBackColor = true;
+            this.btnMau.Click += new System.EventHandler(this.btnMau_Click);
+            // 
+            // txtDuongDan
+            // 
+            this.txtDuongDan.Location = new System.Drawing.Point(92, 68);
+            this.txtDuongDan.Name = "txtDuongDan";
+            this.txtDuongDan.Size = new System.Drawing.Size(411, 26);
+            this.txtDuongDan.TabIndex = 6;
             // 
             // btn_Upload
             // 
-            this.btn_Upload.Location = new System.Drawing.Point(509, 61);
+            this.btn_Upload.Location = new System.Drawing.Point(541, 61);
             this.btn_Upload.Name = "btn_Upload";
             this.btn_Upload.Size = new System.Drawing.Size(75, 40);
             this.btn_Upload.TabIndex = 5;
@@ -126,31 +144,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // txtDuongDan
-            // 
-            this.txtDuongDan.Location = new System.Drawing.Point(92, 68);
-            this.txtDuongDan.Name = "txtDuongDan";
-            this.txtDuongDan.Size = new System.Drawing.Size(411, 26);
-            this.txtDuongDan.TabIndex = 6;
-            // 
-            // btnMau
-            // 
-            this.btnMau.Location = new System.Drawing.Point(622, 61);
-            this.btnMau.Name = "btnMau";
-            this.btnMau.Size = new System.Drawing.Size(88, 40);
-            this.btnMau.TabIndex = 7;
-            this.btnMau.Text = "Tải mẫu";
-            this.btnMau.UseVisualStyleBackColor = true;
-            this.btnMau.Click += new System.EventHandler(this.btnMau_Click);
-            // 
             // frmNhapChatLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(928, 674);
             this.Controls.Add(this.dgvChatLieu);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNhapChatLieu";
             this.Text = "frmNhapChatLieu";
             ((System.ComponentModel.ISupportInitialize)(this.dgvChatLieu)).EndInit();

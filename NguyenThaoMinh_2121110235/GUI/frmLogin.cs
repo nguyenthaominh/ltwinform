@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 using System.Data.SqlClient; //Sử dụng thư viện để làm việc SQL server
 using NguyenThaoMinh_2121110235.Class;
+using NguyenThaoMinh_2121110235.GUI;
 
 namespace NguyenThaoMinh_2121110235
 {
@@ -67,7 +67,10 @@ namespace NguyenThaoMinh_2121110235
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmQuenMatKhau quenMatKhau = new frmQuenMatKhau();
+            quenMatKhau.ShowDialog();
+            
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
